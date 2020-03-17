@@ -1,7 +1,12 @@
 import React from 'react';
 import { Text } from 'react-native';
 import styled from 'styled-components/native';
+import { useDispatch, useSelector } from 'react-redux';
 
+// Action Creators
+import { changeTheme } from '../store/ducks/theme';
+
+// Components
 import { Container } from '../components/Container';
 import { DefaultButton } from '../components/Button';
 
@@ -11,15 +16,22 @@ const BigText = styled.Text`
 `;
 
 export default function Details({ navigation }) {
+
+  const { theme } = useSelector((state) => state.themeReducer);
+
+  const dispatch = useDispatch();
+
+  console.log(theme)
+
   return (
     <Container>  
       <BigText>
         Details Screen
       </BigText>
       <DefaultButton
-        onPress={() => navigation.navigate('Home')}
+        onPress={() => dispatch(changeTheme(theme === 'default' ? 'dark' : 'default'))}
       >
-        <Text>Go to Home Screen!</Text>
+        <Text>Change theme!</Text>
       </DefaultButton>
     </Container>
   );

@@ -1,22 +1,23 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-import { View, Text } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { useSelector } from 'react-redux';
 
-// Screens
-import HomeScreen from '../screens/Home';
-import DetailsScreen from '../screens/Details';
+import { 
+  NavigationContainer, 
+  DefaultTheme,
+  DarkTheme,
+} from '@react-navigation/native';
 
-const Stack = createStackNavigator();
+// Navigations
+import StackNavigation from './StackNavigation';
 
 function Routes() {
+
+  const { theme } = useSelector((state) => state.themeReducer);
+
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Details" component={DetailsScreen} />
-      </Stack.Navigator>
+    <NavigationContainer theme={theme === 'dark' ? DarkTheme : DefaultTheme}>
+      <StackNavigation />
     </NavigationContainer>
   );
 }
