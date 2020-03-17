@@ -13,15 +13,14 @@ import { DefaultButton } from '../components/Button';
 const BigText = styled.Text`
   font-size: 20px;
   font-weight: bold;
+  color: ${(props) => props.theme.colors.text};
 `;
 
-export default function Details({ navigation }) {
+export default function Details() {
 
   const { theme } = useSelector((state) => state.themeReducer);
 
   const dispatch = useDispatch();
-
-  console.log(theme)
 
   return (
     <Container>  

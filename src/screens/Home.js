@@ -9,6 +9,7 @@ import { DefaultButton } from '../components/Button';
 const BigText = styled.Text`
   font-size: 20px;
   font-weight: bold;
+  color: ${(props) => props.theme.colors.text};
 `;
 
 export default function Home({ navigation }) {
